@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class palindrom {
+    public static void main(String[] args) {
+        Scanner x = new Scanner(System.in);
+        System.out.print("enter string");
+        String a = x.nextLine();
+        String b ="";
+        String c = a.toUpperCase();
+        int i = 0;
+        for (i=a.length()-1;i>=0;i--)
+        {
+                b=b+ c.charAt(i);
+        }
+        if (b.equals(c))
+        {
+            System.out.print("palindrome");
+        }
+        else{
+            System.out.print("not a palindrome");
+        }
+
+
+    }
+}
