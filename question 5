@@ -1,0 +1,39 @@
+import java.lang.reflect.Array;
+import java.util.Scanner;
+
+
+public class bubblesort {
+    public static void bubble(int k, int sort[]){
+
+        int temp;
+        for( int h=0; h < k; h++){
+            for(int j=1; j < (k-h); j++){
+                if(sort[j-1] > sort[j]){
+
+                    temp = sort[j-1];
+                    sort[j-1] = sort[j];
+                    sort[j] = temp;
+                }
+            }
+        }
+        for (int z =0;z<k;z++)
+        {
+            System.out.print("\t"+sort[z]);
+        }}
+
+    public static void main(String[] args) {
+
+
+        Scanner myObj = new Scanner(System.in);
+        System.out.print("enter number of inputs");
+        int c = myObj.nextInt();
+        int sort1[] = new int[c];
+        int i = 0;
+        for(i=0;i<c;i++){
+            System.out.print("enter numbers to be sorted");
+            sort1[i] =myObj.nextInt();
+        }
+        bubblesort.bubble(c,sort1);
+    }
+    }
+
