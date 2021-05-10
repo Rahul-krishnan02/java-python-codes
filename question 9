@@ -1,0 +1,40 @@
+import java.util.Scanner;
+public class acceleration {
+    public static void main(String[] args) {
+        long end = 0,start=0;
+        int b=2;
+        Scanner x = new Scanner(System.in);
+        int a = x.nextInt();
+        if (a==1)
+        {
+            start = System.nanoTime();
+            b = x.nextInt();
+            if (b==1)
+            {
+                end = System.nanoTime();
+                long timeelapsed = (end- start);
+                float g = (float) timeelapsed/1000000000;
+                System.out.print(g);
+            }
+        }
+        else if (a==2)
+        {
+            start = System.nanoTime();
+
+            while(b!=0){
+                b = x.nextInt();
+                if (b==1){
+                    end = System.nanoTime();
+                    long timeelapsed = (end- start);
+                    float g = (float) timeelapsed/1000000000;
+                    System.out.print(g);
+                    start = end;
+                }
+                else if (b==0){
+                    System.out.print("session closed");
+                }
+
+            }
+        }
+    }
+}
