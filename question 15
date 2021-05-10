@@ -1,0 +1,28 @@
+public class intro {
+
+    public static void print_intro(){
+        System.out.println("HELLO WORLD");
+    }
+}
+
+
+
+
+public class hello_world {
+    public static void main(String[] args) {
+        intro x = new intro();
+        x.print_intro();
+        inherit y = new inherit();
+        y.print_hw();
+
+        y.print_intro();
+        y.print_hw();
+    }
+
+
+}
+class inherit extends intro{
+    public static void print_hw(){
+        System.out.println("HI I AM A STUDENT OF MIT");
+    }
+}
