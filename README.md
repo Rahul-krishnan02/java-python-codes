@@ -1,11 +1,11 @@
 BASIC JAVA PROGRAMS
 
 Q1)Print the following output
-*
-**
-***
-****
-*****
+	*
+	**
+	***
+	****
+	*****
 
 Q2)Take a string, integer, char, double input from user and print it using (for input)
 a) InputStreamReader
