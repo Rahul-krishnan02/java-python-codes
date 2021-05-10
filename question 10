@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.math.*;
+import java.util.concurrent.TimeUnit;
+public class laptimes {
+    public static void main(String[] args) {
+Scanner x = new Scanner(System.in);
+        System.out.print("enter time 1 mm:ss:msms format without the "+"':'");
+        String a = x.nextLine();
+        System.out.print("enter time 2 mm:ss:msms format without the "+"':'");
+        String b = x.nextLine();
+        System.out.print("enter time 3 mm:ss:msms format without the "+"':'");
+        String c = x.nextLine();
+
+
+        int time1 = ((Integer.parseInt(a.substring(0,2)))*60000)+((Integer.parseInt(a.substring(2,4)))*1000)+(Integer.parseInt(a.substring(4,6)));
+        int time2 = ((Integer.parseInt(b.substring(0,2)))*60000)+((Integer.parseInt(b.substring(2,4)))*1000)+(Integer.parseInt(b.substring(4,6)));
+        int time3 = ((Integer.parseInt(c.substring(0,2)))*60000)+((Integer.parseInt(c.substring(2,4)))*1000)+(Integer.parseInt(c.substring(4,6)));
+            int max = (Math.max(Math.max(time1,time3),time2));
+            long minutes = (max / 1000) / 60;
+            long seconds = (max / 1000) % 60;
+            long ms= max-((minutes*60000)+(seconds*1000));
+            System.out.println(minutes+":"+seconds+":"+ms);
+
+
+    }
+
+
+}
+
