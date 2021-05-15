@@ -1,0 +1,66 @@
+import java.util.Scanner;
+import java.math.*;
+
+public class calculator {
+    public static void main(String[] args) {
+        Scanner x = new Scanner(System.in);
+        int a = x.nextInt();
+        int total, sun;
+        double sum;
+        if (a == 1) {
+            System.out.println("enter first number");
+            int num1 = x.nextInt();
+            System.out.println("enter second number");
+            int num2 = x.nextInt();
+            sun = num1 + num2;
+            System.out.println(sun);
+        }
+        if (a == 2) {
+            System.out.println("enter first number");
+            int num1 = x.nextInt();
+            System.out.println("enter second number");
+            int num2 = x.nextInt();
+            sun = num1 - num2;
+            System.out.println(sun);
+
+        }
+        if (a == 3) {
+            System.out.println("enter first number");
+            int num1 = x.nextInt();
+            System.out.println("enter second number");
+            int num2 = x.nextInt();
+            sun = num1 * num2;
+            System.out.println(sun);
+
+        }
+
+        if (a == 4) {
+            System.out.println("enter first number");
+            int num1 = x.nextInt();
+            double h = Math.toRadians(num1);
+            sum =  Math.sin(h);
+            System.out.println(sum);
+        }
+        if (a == 5) {
+            System.out.println("enter first number");
+            int num1 = x.nextInt();
+            double h = Math.toRadians(num1);
+            sum= (int) Math.cos(h);
+            System.out.println(sum);
+        }
+        if (a == 6) {
+            System.out.println("enter first number");
+            int num1 = x.nextInt();
+            double h = Math.toRadians(num1);
+            sum = (int) Math.tan(h);
+            System.out.println(sum);
+        }
+        if (a == 7) {
+            System.out.println("enter first number");
+            int num1 = x.nextInt();
+            System.out.println("enter powerr");
+            int num2 = x.nextInt();
+            System.out.print(Math.pow(num1,num2));
+        }
+    }
+}
