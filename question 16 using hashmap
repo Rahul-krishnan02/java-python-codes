@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class MIT {
+    public static void main(String[] args) {
+        student x = new student();
+
+x.print_details(x.set_details("rahul",200907336,"ece"));
+    }
+
+
+
+}
+class student{
+    private String name;
+    private int reg_no;
+    private String branch;
+    public void print_details( Map<String, List<String>> Map){
+
+        for (Map.Entry<String, List<String>> entry : Map.entrySet()) {
+            String key = entry.getKey();
+            List<String> values = entry.getValue();
+            System.out.println("Key = " + key);
+            System.out.println("Values = " + values );
+        }
+    }
+    public Map<String, List<String>> set_details(String a, int b, String c){
+        String s=Integer.toString(b);
+        Map<String, List<String>> map = new HashMap<String, List<String>>();
+        List<String> deet1 = new ArrayList<String>();
+
+        deet1.add(s);
+        deet1.add(c);
+        map.put(a, deet1);
+        return map;
+
+
+    }
+}
