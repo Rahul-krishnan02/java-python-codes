@@ -1,0 +1,29 @@
+import java.math.*;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+public class sd{
+    public static void main(String[] args) {
+        String[] a = new String[4];
+        Scanner x = new Scanner(System.in);
+        System.out.print("enter time 1 mm:ss:msms format without the "+"':'");
+        a[1] = x.nextLine();
+        System.out.print("enter time 2 mm:ss:msms format without the "+"':'");
+        a[2] = x.nextLine();
+        System.out.print("enter time 3 mm:ss:msms format without the "+"':'");
+        a[3] = x.nextLine();
+
+
+        int time1 = ((Integer.parseInt(a[1].substring(0,2)))*60000)+((Integer.parseInt(a[1].substring(2,4)))*1000)+(Integer.parseInt(a[1].substring(4,6)));
+        int time2 = ((Integer.parseInt(a[2].substring(0,2)))*60000)+((Integer.parseInt(a[2].substring(2,4)))*1000)+(Integer.parseInt(a[2].substring(4,6)));;
+       int time3 = ((Integer.parseInt(a[3].substring(0,2)))*60000)+((Integer.parseInt(a[3].substring(2,4)))*1000)+(Integer.parseInt(a[3].substring(4,6)));
+        int max = (Math.min(Math.min(time1,time3),time2));
+        long minutes = (max / 1000) / 60;
+        long seconds = (max / 1000) % 60;
+        long ms= max-((minutes*60000)+(seconds*1000));
+        System.out.println(minutes+":"+seconds+":"+ms);
+
+
+    }
+
+
+}
