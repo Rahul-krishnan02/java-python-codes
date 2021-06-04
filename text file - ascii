@@ -1,0 +1,45 @@
+/*1.Take a text file,go line by line,and then convert it into a 2D ASCII character matrix.Make sure the 2D matrix is symmetrical.
+After that make changes to the 2D matrix,convert it back into a text file and see if the changes you made were made and if they were appropriate.
+eg 
+Text file:
+Hello World 
+I am from ECS
+2D Matrix
+72 101 108 108 111 32 87 111 114 108 100 
+73 32 97 109 32 102 114 111 109 32 69 67 83  */
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+public class textread {
+    public static void main(String[] args) {
+        int j = 0;
+        try {
+            File myObj = new File("C:\\Users\\ironm\\Desktop\\FORMULA MANIPAL\\rahul.txt");
+            Scanner myReader = new Scanner(myObj);
+            int av[][] = new int[15][15];
+            while (myReader.hasNextLine()) {
+                    String a = myReader.nextLine();
+                    for(int k = 0; k<a.length();k++){
+                             int g = (int) a.charAt(k);
+                             av[j][k]=g;
+                             System.out.print(g +"\t");
+                }
+                    System.out.println();
+                    j++;
+            }
+for (int z =0; z<15; z++){
+    for (int l=0; l<15; l++){
+        if (av[z][l] ==0 )
+        continue;
+        else{
+        System.out.print((char)av[z][l]);}
+        }  System.out.println();
+    }
+} 
+        catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+
+        }
+    }
+}
