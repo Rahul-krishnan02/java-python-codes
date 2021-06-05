@@ -67,7 +67,6 @@ findreplace(av);
             for(int a=0;a<30;a++)
             { if (av[k][a]==null){ continue;}
                 if(av[k][a].equals(find)){
-                    System.out.print("yayayy");
                     av[k][a]=replace;
                 }
             }}
