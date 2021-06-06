@@ -1,0 +1,38 @@
+import java.io.FileInputStream;
+import java.io.*;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.ss.usermodel.*;
+import java.util.Iterator;
+import java.io.FileWriter;
+import au.com.bytecode.opencsv.CSVWriter;
+public class excel2csv {  
+        public static void main(String[] args) throws Exception{
+               
+                FileInputStream input_document = new FileInputStream(new File("C:\\rahul.xls"));
+                HSSFWorkbook my_xls_workbook = new HSSFWorkbook(input_document); 
+                HSSFSheet my_worksheet = my_xls_workbook.getSheetAt(0); 
+                Iterator<Row> rowIterator = my_worksheet.iterator();            
+                FileWriter my_csv=new FileWriter("rahul1.csv");
+                CSVWriter my_csv_output=new CSVWriter(my_csv); 
+                while(rowIterator.hasNext()) {
+                        Row row = rowIterator.next(); 
+                        int i=0;//String array
+                       
+                        String[] csvdata = new String[2];
+                        Iterator<Cell> cellIterator = row.cellIterator();
+                                while(cellIterator.hasNext()) {
+                                        Cell cell = cellIterator.next(); 
+                                        switch(cell.getCellType()) {
+                                        case Cell.CELL_TYPE_STRING:
+                                                csvdata[i]= cell.getStringCellValue();                                              
+                                                break;
+                                        }
+                                        i=i+1;
+                                }
+                my_csv_output.writeNext(csvdata);
+                }
+                my_csv_output.close();
+                input_document.close(); 
+        }
+}
