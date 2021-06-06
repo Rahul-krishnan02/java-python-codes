@@ -1,0 +1,81 @@
+/*1.Take a text file,go line by line,and then convert it into a 2D ASCII character matrix.Make sure the 2D matrix is symmetrical.
+After that make changes to the 2D matrix,convert it back into a text file and see if the changes you made were made and if they were appropriate.
+eg 
+Text file:
+Hello World 
+I am from ECS
+2D Matrix
+72 101 108 108 111 32 87 111 114 108 100 
+73 32 97 109 32 102 114 111 109 32 69 67 83  */
+
+import java.io.*;
+import java.util.Scanner;
+public class textread {
+    public static void main(String[] args) {
+        int j = 0,i=1;
+
+        String c;
+
+
+        try {
+            File myObj = new File("C:\\Users\\ironm\\Desktop\\FORMULA MANIPAL\\rahul.txt");
+            Scanner myReader = new Scanner(myObj);
+            int av[][] = new int[30][30];
+            while (myReader.hasNextLine()) {
+                String a = myReader.nextLine();
+                for(int k = 0; k<a.length();k++){
+
+                    av[j][k]=(int) a.charAt(k);
+                    System.out.print((int) a.charAt(k)+"\t");
+                }
+                System.out.println();
+                j++;
+            }
+
+writetofile(findreplace(av));
+
+
+
+        }
+        catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+
+        }
+    }
+    public static int[][] findreplace (int[][] av) {
+        Scanner xyz = new Scanner(System.in);
+        System.out.println("enter ascii to find");
+        int find = xyz.nextInt();
+        System.out.println("enter ascii to replace ");
+        int replace= xyz.nextInt();
+        for (int k =0;k<30;k++){
+            for(int a=0;a<30;a++)
+            { if (av[k][a]== 0){ continue;}
+                if(av[k][a]== find){
+
+                    av[k][a]=replace;
+                }
+            }}
+        return av;}
+
+public static void writetofile(int[][] av){
+    try{
+        File myObj = new File("C:\\Users\\ironm\\Desktop\\FORMULA MANIPAL\\rahul.txt");
+        PrintWriter out = new PrintWriter(myObj);
+        for (int m =0;m<30;m++){
+            for(int o=0;o<30;o++)
+            { if(av[m][o]== 0){continue;}
+            else{
+                out.print((char) av[m][o]);
+            }}
+            out.println();
+        }out.close();
+
+    }
+    catch (Exception e){
+        e.getMessage();
+    }
+}
+
+
+}
