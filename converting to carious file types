@@ -1,0 +1,75 @@
+import java.awt.*;
+import  java.io.*;
+import java.util.Iterator;
+import java.util.Scanner;
+
+import au.com.bytecode.opencsv.CSVWriter;
+import  org.apache.poi.hssf.usermodel.HSSFSheet;
+import  org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import  org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+
+public class lalalaa {
+    public static void main(String[] args) throws IOException {
+        String filename = "C:\\Users\\ironm\\Desktop\\FORMULA MANIPAL\\Book2.xls";
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("excelsheet");
+
+        File text = new File("C:\\Users\\ironm\\Desktop\\FORMULA MANIPAL\\rahul.txt");
+        Scanner sc = new Scanner(text);
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Enter the number of columns in the text file: ");
+        int columns = in.nextInt();
+
+        String[][] array = new String[columns][columns];
+        while (sc.hasNextLine()) {
+            for (int i = 0; i < array.length; i++) {
+                String[] line = sc.nextLine().trim().split(" ");
+                for (int j = 0; j < line.length; j++) {
+                    array[i][j] = line[j];
+                }
+            }
+        }
+
+        int k, l;
+
+        for (k = 0; k < columns; k++) {
+            HSSFRow rowhead = sheet.createRow((short) k);
+            for (l = 0; l < columns; l++) {
+                rowhead.createCell(l).setCellValue(array[k][l]);
+            }
+        }
+        FileOutputStream fileOut = new FileOutputStream(filename);
+        workbook.write(fileOut);
+        fileOut.close();
+        workbook.close();
+        System.out.println("The excel file has been created successfully.");
+        FileInputStream input_document = new FileInputStream(new File("C:\\Book2.xls"));
+
+        HSSFWorkbook my_xls_workbook = new HSSFWorkbook(input_document);
+        HSSFSheet my_worksheet = my_xls_workbook.getSheetAt(0);
+        Iterator<Row> rowIterator = my_worksheet.iterator();
+        FileWriter my_csv=new FileWriter("rahull.csv");
+        CSVWriter my_csv_output=new CSVWriter(my_csv);
+        while(((Iterator<?>) rowIterator).hasNext()) {
+            Row row = rowIterator.next();
+            int i=0;
+            String[] csvdata = new String[2];
+            Iterator<Cell> cellIterator = row.cellIterator();
+            while(cellIterator.hasNext()) {
+                Cell cell = cellIterator.next(); //Fetch CELL
+                switch(cell.getCellType()) {
+                    case STRING:
+                        csvdata[i]= cell.getStringCellValue();
+                        break;
+                }
+                i=i+1;
+            }
+            my_csv_output.writeNext(csvdata);
+        }
+        my_csv_output.close();
+        input_document.close();
+    }
+}
