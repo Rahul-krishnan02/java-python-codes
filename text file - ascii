@@ -8,9 +8,7 @@ I am from ECS
 72 101 108 108 111 32 87 111 114 108 100 
 73 32 97 109 32 102 114 111 109 32 69 67 83  */
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
+import java.io.*;
 import java.util.Scanner;
 public class textread {
     public static void main(String[] args) {
@@ -47,7 +45,7 @@ public class textread {
                 System.out.println();
             }
 
-findreplace(av);
+writetofile(findreplace(av));
 
 
 
@@ -57,7 +55,7 @@ findreplace(av);
 
         }
     }
-    public static void findreplace ( String av[][]) {
+    public static String[][] findreplace (String[][] av) {
         Scanner xyz = new Scanner(System.in);
         System.out.println("enter word to find");
         String find = xyz.nextLine();
@@ -67,16 +65,30 @@ findreplace(av);
             for(int a=0;a<30;a++)
             { if (av[k][a]==null){ continue;}
                 if(av[k][a].equals(find)){
+
                     av[k][a]=replace;
                 }
             }}
+        return av;}
+
+public static void writetofile(String[][] av){
+    try{
+        File myObj = new File("C:\\Users\\ironm\\Desktop\\FORMULA MANIPAL\\rahul.txt");
+        PrintWriter out = new PrintWriter(myObj);
         for (int m =0;m<30;m++){
             for(int o=0;o<30;o++)
             { if(av[m][o]== null){continue;}
-              else{
-                System.out.print(av[m][o]+"\t");
+            else{
+                out.print(av[m][o]+" ");
             }}
-        System.out.println();}
+            out.println();
+        }out.close();
 
     }
+    catch (Exception e){
+        e.getMessage();
+    }
+}
+
+
 }
