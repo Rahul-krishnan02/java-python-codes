@@ -1,0 +1,24 @@
+interface i1{
+    void print();
+  default   void display(){
+      System.out.println("hello world");
+  }
+}
+interface i2{
+void exit();
+}
+ class hi implements i1{
+    public void print() {
+        System.out.println("bye world");
+    }
+}
+
+public class interfaces extends hi {
+    public static void main(String[] args) {
+       i1 obj = new hi() ;
+       obj.print();
+i2 obj1= () -> System.out.println("you have exited");
+obj1.exit();
+    }
+
+}
