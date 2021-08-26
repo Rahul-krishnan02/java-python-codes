@@ -1,0 +1,72 @@
+package sample;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+
+public class Controller {
+    public int credits ;
+    public int sum;
+    @FXML
+    private TextField tf1;
+    @FXML
+    private TextField tf2;
+    @FXML
+    private TextField tf3;
+    @FXML
+    private TextField tf4;
+    @FXML
+    private ListView l1;
+    @FXML
+    private Drop
+    public void Add (ActionEvent e){
+        int a = Integer.parseInt(tf1.getText());
+        String grade="";
+        int value=0;
+        if(a>=90){
+            grade= "A+";
+            value = 10;
+        }
+        else if (a>=80&&a<90){
+            grade= "A";
+            value = 9;
+        }
+        else if (a>=70&&a<80){
+            grade= "B";
+            value = 8;
+        }
+        else if (a>=60&&a<70){
+            grade= "C";
+            value = 7;
+        }
+        else if (a>=50&&a<60){
+            grade= "D";
+            value = 6;
+        }
+        else if (a>=40&&a<50){
+            grade= "E";
+            value = 5;
+        }
+        else if (a<40){
+            grade= "F";
+            value = 0;
+        }
+
+        int b = Integer.parseInt(tf2.getText());
+        sum = sum + (credits*value);
+        credits = credits + b;
+        String c = tf3.getText();
+        l1.getItems().add(c+"-"+grade);
+        tf1.setText("");
+        tf2.setText("");
+        tf3.setText("");
+
+    }
+    public void calculate(ActionEvent e){
+        int gpa = ((sum)/credits);
+        System.out.println(sum);
+        System.out.println(credits);
+        tf4.setText(String.valueOf(gpa));
+    }
+}
